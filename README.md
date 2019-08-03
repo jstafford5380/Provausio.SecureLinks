@@ -1,6 +1,7 @@
 # Provausio.SecureLinks
 An API that provides a generic way to hide values or data by creating a non-enumerable ID that can only be accessed by the intended recipient client, much like a private key pair.
 
+This offers a solution for when you want to provide semi-secure links to data without needing an auth system. Use accordingly.
 
 # Creating a Link
 #### Sample Request
@@ -101,6 +102,10 @@ In this scenario, consider the following:
 - System A then sends the following link to the user `https://mysite.com/landingpage/q77sPOimPHcLCHy`
 - When the user clicks the link, it'll take them to the landing page at that address (let's call it system B).
 - System B will use the linkId `q77sPOimPHcLCHy` along with its own secret to generate the hash `5041dd7435a95a3fd2a1f97bfdf8fbe75db3eacd` which it uses to request the data from the link generator. If the hash is correct, then the data is returned.
+
+### Other Use Cases
+- Generic resource sharing (e.g. sharing documents, configurations, etc.)
+- Paramter obfuscation (e.g. when you don't want to put things like user IDs in the link)
 
 ## Notes
  - Yes, system A needs to know the secrets of all the authorized systems in order to request the link, so maybe "secret" is a misleading thing to call it. It's basically an identifier that only the client and server should be aware of.
