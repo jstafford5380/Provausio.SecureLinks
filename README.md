@@ -1,5 +1,5 @@
 # Provausio.SecureLinks
-An API that provides a generic way to hide values or data by creating a non-enumerable ID that can only be accessed by the intended recipient client, much like a private key pair.
+An API that provides a generic way to hide values or data by creating a non-enumerable ID that can only be accessed by the intended recipient client, much like a private key pair. This started off as an experiment but I think it's actually pretty useful.
 
 This offers a solution for when you want to provide semi-secure links to data without needing an auth system or involving certificates. Use accordingly.
 
