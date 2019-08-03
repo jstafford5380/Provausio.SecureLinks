@@ -109,6 +109,4 @@ In this scenario, consider the following:
 
 ## Notes
  - Yes, system A needs to know the secrets of all the authorized systems in order to request the link, so maybe "secret" is a misleading thing to call it. It's basically an identifier that only the client and server should be aware of.
- - The uniqueness of the LinkID is 1 in about 93 trillion.
- - The uniquess of the client secret is arbitrary.
- - The uniquess of the hash is variable depending on the number of active links still in the database, hence the expiration behavior. But for argument sake, I believe that even if you had 1.71 x 10<sup>155</sup> links in the database, then the chances of a collision/guess would still be something like 1 in 10<sup>18</sup>
+ - Keep in mind that the hash is only a SHA-1, so it's not the most unique thing in the world, but should be more than sufficient for this use case. 
