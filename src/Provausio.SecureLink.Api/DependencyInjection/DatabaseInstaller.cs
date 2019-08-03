@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using Provausio.SecureLink.Application;
 using Provausio.SecureLink.Application.Services;
 using Provausio.SecureLink.MongoDb;
 
@@ -14,7 +13,8 @@ namespace Provausio.SecureLink.Api.DependencyInjection
         {
             services.AddSingleton(p =>
             {
-                var client = new MongoClient(config["MongoDb:ConnectionString"]);
+                var connectionString = config["MongoDb:ConnectionString"];
+                var client = new MongoClient(connectionString);
                 var database = client.GetDatabase("secureLink");
                 return database;
             });
