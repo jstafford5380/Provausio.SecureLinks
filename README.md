@@ -85,7 +85,9 @@ let hash = CryptoJS.SHA1(salt).toString(CryptoJS.enc.Hex);
 
 ``` json
 {
-    "value": "hello world"
+    "value": "hello world",
+    "isEncrypted" : false,
+    "expiresAt" : "2019-08-03T22:05:46.9504561+00:00"
 }
 ```
 
