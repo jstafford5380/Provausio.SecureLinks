@@ -2,7 +2,7 @@
 
 namespace Provausio.SecureLink.Application.Queries
 {
-    public class DecodeLinkQuery : IRequest<string>
+    public class DecodeLinkQuery : IRequest<SecuredValue>
     {
         /// <summary>
         /// Gets the hash.

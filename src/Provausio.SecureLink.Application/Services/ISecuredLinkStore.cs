@@ -30,6 +30,6 @@ namespace Provausio.SecureLink.Application.Services
         /// <param name="hash">The hash.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        Task<string> GetDataAsync(string hash, CancellationToken cancellationToken);
+        Task<SecuredValue> GetDataAsync(string hash, CancellationToken cancellationToken);
     }
 }

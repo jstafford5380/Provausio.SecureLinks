@@ -1,9 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
+using RiskFirst.Hateoas.Models;
 
 namespace Provausio.SecureLink.Api.SecuredLinks.Models
 {
-    public class CreateLinkResponse
+    public class CreateLinkResponse : LinkContainer
     {
         /// <summary>
         /// The link identifier.

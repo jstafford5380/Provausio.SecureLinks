@@ -36,12 +36,15 @@ namespace Provausio.SecureLink.MongoDb
             await _collection.InsertManyAsync(docs, cancellationToken: cancellationToken);
         }
 
-        public async Task<string> GetDataAsync(string hash, CancellationToken cancellationToken)
+        public async Task<SecuredValue> GetDataAsync(string hash, CancellationToken cancellationToken)
         {
             var cursor = await _collection.FindAsync(d => d.Hash == hash, cancellationToken: cancellationToken);
             var docs = await cursor.ToListAsync(cancellationToken);
+            var doc = docs.SingleOrDefault();
 
-            return docs.SingleOrDefault()?.Data;
+            return doc == null 
+                ? SecuredValue.Empty
+                : new SecuredValue(doc.Data, doc.IsEncrypted, doc.ExpireAt);
         }
     }
 }

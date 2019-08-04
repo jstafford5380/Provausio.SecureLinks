@@ -5,7 +5,7 @@ using Provausio.SecureLink.Application.Services;
 
 namespace Provausio.SecureLink.Application.Queries
 {
-    public class DecodeLinkQueryHandler : IRequestHandler<DecodeLinkQuery, string>
+    public class DecodeLinkQueryHandler : IRequestHandler<DecodeLinkQuery, SecuredValue>
     {
         private readonly ISecuredLinkStore _store;
 
@@ -14,10 +14,10 @@ namespace Provausio.SecureLink.Application.Queries
             _store = store;
         }
 
-        public async Task<string> Handle(DecodeLinkQuery request, CancellationToken cancellationToken)
+        public async Task<SecuredValue> Handle(DecodeLinkQuery request, CancellationToken cancellationToken)
         {
             var result = await _store.GetDataAsync(request.Hash, cancellationToken);
-            return result;
+            return result.Equals(SecuredValue.Empty) ? null : result;
         }
     }
 }

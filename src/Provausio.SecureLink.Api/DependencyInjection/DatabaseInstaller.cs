@@ -23,14 +23,14 @@ namespace Provausio.SecureLink.Api.DependencyInjection
             {
                 var database = p.GetRequiredService<IMongoDatabase>();
                 var collection = database.GetCollection<SecureLinkData>("secureLinks");
-                
+
                 var expireAtIndex = new CreateIndexModel<SecureLinkData>(
-                    Builders<SecureLinkData>.IndexKeys.Ascending(r => r.ExpireAt), 
-                    new CreateIndexOptions { ExpireAfter = TimeSpan.FromSeconds(0)});
+                    Builders<SecureLinkData>.IndexKeys.Ascending(r => r.ExpireAt),
+                    new CreateIndexOptions {ExpireAfter = TimeSpan.FromSeconds(0)});
 
                 var uniqueHashIndex = new CreateIndexModel<SecureLinkData>(
-                    Builders<SecureLinkData>.IndexKeys.Ascending(i => i.Hash), 
-                    new CreateIndexOptions { Unique = true });
+                    Builders<SecureLinkData>.IndexKeys.Ascending(i => i.Hash),
+                    new CreateIndexOptions {Unique = true});
 
                 collection.Indexes.CreateMany(new[] { expireAtIndex, uniqueHashIndex });
 
