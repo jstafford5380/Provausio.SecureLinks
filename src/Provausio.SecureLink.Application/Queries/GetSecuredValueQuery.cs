@@ -2,7 +2,7 @@
 
 namespace Provausio.SecureLink.Application.Queries
 {
-    public class DecodeLinkQuery : IRequest<SecuredValue>
+    public class GetSecuredValueQuery : IRequest<SecuredValue>
     {
         /// <summary>
         /// Gets the hash.
@@ -13,10 +13,10 @@ namespace Provausio.SecureLink.Application.Queries
         public string Hash { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DecodeLinkQuery"/> class.
+        /// Initializes a new instance of the <see cref="GetSecuredValueQuery"/> class.
         /// </summary>
         /// <param name="hash">The hash.</param>
-        public DecodeLinkQuery(string hash)
+        public GetSecuredValueQuery(string hash)
         {
             Hash = hash;
         }

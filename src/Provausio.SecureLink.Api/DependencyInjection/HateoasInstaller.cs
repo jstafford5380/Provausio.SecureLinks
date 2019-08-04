@@ -10,10 +10,11 @@ namespace Provausio.SecureLink.Api.DependencyInjection
         {
             services.AddLinks(config =>
             {
+                config.UseRelativeHrefs();
                 config.AddPolicy<CreateLinkResponse>(policy =>
                 {
                     policy.RequireSelfLink();
-                    policy.RequireRoutedLink("get", "get_link_data", response => new { hash = "__hash__" });
+                    policy.RequireRoutedLink("get", "GetSecuredData", response => new { hash = "__hash__" });
                 });
 
                 config.AddPolicy<SecuredDataResponse>(policy =>

@@ -11,12 +11,12 @@ namespace Provausio.SecureLink.Api.SecuredLinks
     public class LinksController : ApiController
     {
         /// <summary>
-        /// Creates the link.
+        /// Creates the link ID for the secured data.
         /// </summary>
         /// <param name="request">The request.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        [HttpPost("links", Name = "create_link")]
+        [HttpPost("links", Name = nameof(CreateLink))]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(CreateLinkResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ApiError))]
         public async Task<IActionResult> CreateLink(
@@ -43,16 +43,16 @@ namespace Provausio.SecureLink.Api.SecuredLinks
         }
 
         /// <summary>
-        /// Decodes the link.
+        /// Retrieve the secured data.
         /// </summary>
         /// <param name="hash">The hash.</param>
         /// <returns></returns>
-        [HttpGet("links/{hash}", Name = "get_link_data")]
+        [HttpGet("links/{hash}", Name = nameof(GetSecuredValue))]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SecuredDataResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DecodeLink(string hash)
+        public async Task<IActionResult> GetSecuredValue(string hash)
         {
-            var getData = new DecodeLinkQuery(hash.ToLower());
+            var getData = new GetSecuredValueQuery(hash.ToLower());
             var result = await Mediator.Send(getData);
 
             if (result == null)
